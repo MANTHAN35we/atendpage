@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Present Students</title>
+</head>
+<body>
+  <link rel="stylesheet" href="present_students.css">
+<h1>Present Students</h1>
+<div id="presentStudentsList">
+  <!-- Display present students list here -->
+</div>
+
+<script>
+// Retrieve presentStudents from localStorage
+const presentStudents = JSON.parse(localStorage.getItem('presentStudents'));
+
+// Display present students list
+const presentStudentsListDiv = document.getElementById('presentStudentsList');
+presentStudents.forEach(student => {
+  const studentDiv = document.createElement('div');
+  studentDiv.textContent = `${student.name} (UID: ${student.uid})`;
+  presentStudentsListDiv.appendChild(studentDiv);
+});
+</script>
+</body>
+</html>

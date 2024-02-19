@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance Tracker</title>
+</head>
+<body>
+<h1>Student Attendance Tracker</h1>
+<div id="studentList">
+  <!-- Display student list here -->
+</div>
+<button onclick="markPresent()">Mark Present</button>
+<button onclick="markAbsent()">Mark Absent</button>
+<!-- Add link to navigate to the present_students.html page -->
+<a href="present_students.html">View Present Students</a>
+
+<link rel="stylesheet" href="styles.css">
+
+<script>
+// Sample student data (replace with your actual data)
+const students = [
+  { name: "SHIRISH KUMAR", uid: "23FBCA068" },
+  { name: "ARIF ANSARI", uid: "23FBCA001" },
+  { name: "ADARSH PATEL", uid: "23FBCA043" },
+  { name: "REHAN MIYA", uid: "23FBCA031" },
+  { name: "AJAY SINGH", uid: "23FBCA070" },
+  { name: "FAZEELA SHAIKH", uid: "23FBCA065" },
+  { name: "Krisha Dabhi", uid: "23FBCA014" },
+  { name: "YASHWANT PRAJAPATI", uid: "23FBCA050" },
+  { name: "Tasnim Govani", uid: "23FBCA058" },
+  { name: "MIZAN Saiyed", uid: "23FBCA034" },
+  { name: "Aksha Memon", uid: "23FBCA067" },
+  { name: "Mohammad Sufiyan Shaikh", uid: "23FBCA004" },
+  { name: "vrundabaa Ataliya", uid: "23FBCA012" },
+  { name: "NARENDRA CHAUDHARY", uid: "23FBCA055" },
+  { name: "Vaibhav RAJPUT", uid: "23FBCA037" },
+  { name: "Senty pandey", uid: "23FBCA086" },
+  { name: "Sneha yadav", uid: "23FBCA002" },
+  { name: "Arjun Patel", uid: "23FBCAO11" },
+  { name: "Akash Chaudhari", uid: "23FBCA036" },
+  { name: "𝙰𝚢𝚞𝚜𝚑 𝙿𝚊𝚗𝚍𝚎𝚢", uid: "23FBCA075" },
+  { name: "KRISHNA SONI", uid: "23FBCA018" },
+  { name: "MANTHAN DESAI", uid: "23FBCA024" },
+  { name: "karan khatik", uid: "23FBCA026" },
+  { name: "Suhani khuswaha", uid: "23FBCA083" },
+  { name: "Mohammad raiyan vhora", uid: "23FBCA008" },
+  { name: "Aman balluwala", uid: "23FBCA003" },
+  { name: "ASAMDI ABIDALI ASAMDI", uid: "23FBCA016" },
+  { name: "Krunal Dave", uid: "23FBCA085" },
+  { name: "Anand Yadav", uid: "23FBCAOO7" },
+  { name: "Hepin baldha", uid: "23FBCA017" },
+  { name: "Kajal Desai", uid: "23FBCA035" },
+  { name: "Riya Panchal", uid: "23FBCA051" },
+  { name: "PRIYA SHER SINGH", uid: "23FBCA082" },
+  { name: "Narendra vaghjiyani", uid: "2" },
+  { name: "ansh ptel", uid: "5" }
+
+];
+
+// Display student list
+function displayStudentList() {
+  const studentListDiv = document.getElementById('studentList');
+  studentListDiv.innerHTML = '';
+  students.forEach(student => {
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = student.uid;
+    checkbox.id = student.uid;
+    
+    const label = document.createElement('label');
+    label.htmlFor = student.uid;
+    label.appendChild(document.createTextNode(student.name));
+    
+    studentListDiv.appendChild(checkbox);
+    studentListDiv.appendChild(label);
+    studentListDiv.appendChild(document.createElement('br'));
+  });
+}
+
+// Function to mark students present
+function markPresent() {
+  const presentStudents = [];
+  students.forEach(student => {
+    const checkbox = document.getElementById(student.uid);
+    if (checkbox.checked) {
+      presentStudents.push(student);
+    }
+  });
+  // Store presentStudents in localStorage to pass it to the next page
+  localStorage.setItem('presentStudents', JSON.stringify(presentStudents));
+  // Redirect to the next page
+  window.location.href = 'present_students.html';
+}
+
+// Function to mark students absent
+function markAbsent() {
+  // Your code to mark students absent
+}
+
+// Display student list when the page loads
+displayStudentList();
+</script>
+</body>
+</html>
